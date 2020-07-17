@@ -40,7 +40,7 @@ fields_vmon =["{}_VMon".format(x) for x in range(nchans)]
 fields_imon =["{}_IMon".format(x) for x in range(nchans)]
 fieldnames = ['ts'] + list(chain(*zip(fields_vmon, fields_imon))) # V and I interleaved
 
-print(fieldnames)
+#print(fieldnames)
 
 arr = np.genfromtxt(fp, names= fieldnames)
 fp.close()
@@ -64,6 +64,9 @@ dates = dates[lastHour_idx:]
 
 ax=plt.gca()
 ax1 = plt.subplot(211)
+
+ax1.set_title(time.strftime("%D %H:%M", time.localtime(int(arr['ts'][-1]))))
+
 ax1.set_ylabel('Volts')
 marker = cycle(markers)
 for name in fields_vmon:
@@ -82,6 +85,8 @@ locator = mdates.AutoDateLocator(minticks=3, maxticks=7)
 formatter = mdates.ConciseDateFormatter(locator)
 ax2.xaxis.set_major_locator(locator)
 ax2.xaxis.set_major_formatter(formatter)
+
+plt.gcf().subplots_adjust(bottom=0.15)
 
 plt.xticks( rotation=25 )
 #plt.show()
