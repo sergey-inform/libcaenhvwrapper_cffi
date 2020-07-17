@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<meta http-equiv="refresh" content="60" >
+	</head>
+	<body>
+		<h2> MWPC IMon and VMon over the past hour</h2>
+		<img id=plot src="./hv.png"/>
+
+<script>
+	var d = new Date(); 
+	document.getElementById("plot").src += '?' + d.getTime();
+</script>
+</body>
