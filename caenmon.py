@@ -58,7 +58,7 @@ def log_hdr(logfile, chanlist):
     logfile.write("# ts\t{}\n".format("\t".join(channames)))
 
 def log_vals(logfile, ts, vals):
-    vals_format = "{:5.1f} {:3.1f}" # V, I
+    vals_format = "{:5.1f} {:3.2f}" # V, I
     str_vals = "\t".join((vals_format.format(a,b) for a,b in zip(*vals)))
     logfile.write("{:<#10.2f}\t{}\n".format(ts, str_vals))
     pass
@@ -70,7 +70,7 @@ def print_hdr(chanlist):
     print(print_format.format("# ts", "  ".join(channames)))
 
 def print_vals(timestr, vals, prev):
-    vals_format = "{: >#5.1f}  {: >#3.1f} uA "
+    vals_format = "{: >#5.1f}  {: >#3.2f} uA "
     str_vals = "  ".join((vals_format.format(a,b) for a,b in zip(*vals)))
     print(print_format.format(timestr, str_vals),
             end = ' \n' if vals != prev else ' \r',
